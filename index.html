@@ -8,10 +8,77 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./index.scss" />
   </head>
 
   <body>
-    <img src="images/icons/logo-white.svg" alt="Greenthumb" />
+    <main>
+      <section id="banner">
+        <div class="leaves leaves-left" aria-hidden="true"></div>
+        <div class="leaves leaves-right" aria-hidden="true"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <img src="images/icons/logo-white.svg" alt="Greenthumb" />
+              <h1 class="title">Find your next green friend</h1>
+              <button type="button" class="arrow" aria-label="Jump to content"></button>
+            </div>
+            <div class="col">
+              <img class="image" src="images/hero/desktop/plantperson.png" aria-hidden="true" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="select">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="icon" aria-hidden="true">
+                <img src="images/illustrations/sun.png">
+              </div>
+              <p>Set the amount of <b>sunlight</b> your plant will get.</p>
+              <select name="" id="">
+                <option value="" selected>Select...</option>
+              </select>
+            </div>
+            <div class="col">
+              <div class="icon" aria-hidden="true">
+                <img class="rotate" src="images/illustrations/wateringcan.png">
+              </div>
+              <p>How often do you want to <b>water</b> your plant?</p>
+              <select name="" id="">
+                <option value="" selected>Select...</option>
+              </select>
+            </div>
+            <div class="col">
+              <div class="icon" aria-hidden="true">
+                <img src="images/illustrations/dog.png">
+              </div>
+              <p>Do you have pets? Do they <b>chew</b> plants? </p>
+              <select name="" id="">
+                <option value="" selected>Select...</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="result" class="no-result">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h3 class="title">No results yet…</h3>
+              <p>Use the filters above to find the plant that best fits your environment :)</p>
+            </div>
+            <div class="col" aria-hidden="true">
+              <img src="images/illustrations/no-results.png">
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

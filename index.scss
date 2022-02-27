@@ -1,4 +1,202 @@
+//-- VARS ------------------------------------------------------- //
+
+$bg-body: #F2F2F2;
+$color-1: #75BC97;
+$color-2: #1E6B4E;
+$color-3: #0C261C;
+
+$font-color: #848484;
+$font-color-2: #A9A9A9;
+
+//-- KEYFRAMES -------------------------------------------------- //
+
+@-webkit-keyframes jump { 
+    0% , 100% { transform: translateY(0); } 
+    50% { transform: translateY(15px); } 
+}
+
+@keyframes jump { 
+    0% , 100% { transform: translateY(0); } 
+    50% { transform: translateY(15px); } 
+}
+
+//-- DEFAULT ---------------------------------------------------- //
+
 body {
+    color: $font-color;
+    background: $bg-body;
     font-family: "Montserrat", sans-serif;
-    background-color: green;
+}
+
+b {
+    font-weight: bold;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: 857px;
+    max-width: 100%;
+    margin: auto;
+    padding: 0 12.5px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -12.5px;
+    .col {
+        flex: 1;
+        width: 50%;
+        padding: 0 12.5px;
+    }
+}
+
+//-- BANNER ----------------------------------------------------- //
+
+#banner {
+    // height: 500px;
+    padding: 50px 0 45px;
+    position: relative;
+    background-color: $color-1;
+    .row {
+        align-items: center;
+        .col {
+            &:first-child {
+                position: relative;
+                z-index: 2;
+            }
+        }
+    }
+    .title {
+        font-weight: bold;
+        font-size: 70px;
+        line-height: 85px;
+        color: #fff;
+        margin: 45px 0 25px;
+    }
+    .arrow {
+        width: 35px;
+        height: 39px;
+        display: block;
+        border: 0;
+        cursor: pointer;
+        background: url('images/icons//arrow-down.svg') no-repeat;
+        background-size: contain;
+        animation: jump 1s ease-out 0s infinite;
+    }
+    .image {
+        width: 335px;
+        display: block;
+        margin: auto;
+    }
+    .leaves {
+        height: 100%;
+        position: absolute;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        top: 0;
+        &-left {
+            width: 862px;
+            max-width: 60vw;
+            left: 0;
+            background-image: url('images/hero/desktop/left-leaves.png');
+        }
+        &-right {
+            width: 361px;
+            max-width: 30vw;
+            right: 0;
+            background-image: url('images/hero/desktop/right-leaves.png');
+        }
+    }
+}
+
+//-- SELECT ----------------------------------------------------- //
+
+#select {
+    padding: 47px 0 3px;
+    counter-reset: item;  
+    background-color: #fff;
+    .row {
+        margin: 0 -50px;
+        .col {
+            padding: 0 50px;
+            margin-bottom: 50px;
+            &:last-child {
+                .icon {
+                    img {
+                        max-height: 62px;
+                    }
+                }
+            }
+        }
+    }
+    .icon {
+        height: 75px;
+        display: flex;
+        align-items: center;
+        .rotate {
+            transform: scaleX(-1);
+        }
+        img {
+            max-height: 100%;
+        }
+    }
+    p {
+        font-size: 14px;
+        line-height: 22px;
+        margin: 13px 0 24px;
+        &:before {
+            content: counter(item)'. ';
+            counter-increment: item;
+            font-weight: bold;
+        }
+    }
+    select {
+        width: 100%;
+        height: 40px;
+        color: #A9A9A9;
+        cursor: pointer;
+        appearance: none;
+        border-radius: 19px;
+        padding: 5px 40px 5px 18px;
+        border: 1px solid #A9A9A9;
+        &:hover {
+            color: $color-1;
+            border-color: $color-1;
+        }
+    }
+}
+
+//-- RESULT ----------------------------------------------------- //
+
+#result {
+    padding: 37px 0;
+    &.no-result {
+        padding: 52px 0;
+        color: #A9A9A9;
+        .row {
+            align-items: center;
+        }
+        .col {
+            width: 100%;
+            &:last-child {
+                max-width: 34%;
+            }
+        }
+        .title {
+            font-size: 45px;
+            font-weight: bold;
+            line-height: 55px;
+            margin-bottom: 13px;
+        }
+        p {
+            width: 220px;
+            max-width: 100%;
+            font-size: 16px;
+            line-height: 27px;
+        }
+    }
 }
