@@ -28,11 +28,32 @@ document.querySelectorAll('.select select').forEach(function(e) {
   });
 });
 
-// -- Fetch API ------------------------------------------- //
+// -- Render List ----------------------------------------- //
 
-//sun:    no | low | high 
-//water:  regularly | daily | rarely
-//pets:   true | false
+function renderPlantsList(element) {
+	let item = document.createElement('a');
+	item.setAttribute('class', element.staff_favorite ? 'item favorite' : 'item');
+	renderList.appendChild(item);
+	item.innerHTML = `
+		${element.staff_favorite ? '<span class="flag">✨ Staff favorite</span>': ''}
+		<div class="image" aria-hidden="true">
+			<img src="${element.url}">
+		</div>
+		<div class="box">
+			<h3 class="title-plant">${element.name}</h3>
+			<div class="info">
+				<span class="price">$${element.price}</span>
+				<div class="symbols">
+					${element.toxicity ? '<span class="toxic"></span>' : '<span class="pets"></span>'}
+					${element.sun ? '<span class="' + element.sun + '-sun"></span>' : ''}
+					${element.water ? '<span class="' + element.water + '"></span>' : ''}
+				</div>
+			</div>
+		</div> 
+		`;
+}
+
+// -- Fetch API ------------------------------------------- //
 
 function loadItems(options) {
 	fetch(`https://front-br-challenges.web.app/api/v2/green-thumb/?sun=${options.sun}&water=${options.water}&pets=${options.pets}`)
@@ -56,28 +77,6 @@ function loadItems(options) {
 			return
 		}
 		data.forEach(renderPlantsList);
-			function renderPlantsList(element) {
-				let item = document.createElement('a');
-				item.setAttribute('class', element.staff_favorite ? 'item favorite' : 'item');
-				renderList.appendChild(item);
-				item.innerHTML = `
-					${element.staff_favorite ? '<span class="flag">✨ Staff favorite</span>': ''}
-					<div class="image" aria-hidden="true">
-						<img src="${element.url}">
-					</div>
-					<div class="box">
-						<h3 class="title-plant">${element.name}</h3>
-						<div class="info">
-							<span class="price">$${element.price}</span>
-							<div class="symbols">
-								<img src="/pet.svg" alt="">
-								<img src="/high-sun.svg" alt="">
-								<img src="/1-drop.svg" alt="">
-							</div>
-						</div>
-					</div> 
-					`;
-			}
 	}).catch(function (err) {
 		console.warn('Something went wrong.', err);
 	});
