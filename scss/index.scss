@@ -261,6 +261,12 @@ img {
         gap: 20px 25px;
         padding: 20px 0;
         grid-template-columns: repeat(4, 1fr);
+        .error {
+            width: 100%;
+            font-size: 20px;
+            text-align: center;
+            padding: 40px 0;
+        }
         .item {
             min-height: 245px;
             border-radius: 5px;
