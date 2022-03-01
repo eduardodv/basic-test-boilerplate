@@ -1,13 +1,28 @@
 //-- KEYFRAMES -------------------------------------------------- //
 
-@-webkit-keyframes jump { 
+@keyframes jump { 
     0% , 100% { transform: translateY(0); } 
     50% { transform: translateY(15px); } 
 }
 
-@keyframes jump { 
-    0% , 100% { transform: translateY(0); } 
-    50% { transform: translateY(15px); } 
+@keyframes to-right { 
+    0% { left: -20vw; } 
+    100%  { left: 0; } 
+}
+
+@keyframes to-left { 
+    0% { right: -20vw; } 
+    100%  { right: 0; } 
+}
+
+@keyframes to-bottom { 
+    0% { top: -40vw; } 
+    100%  { top: 0; } 
+}
+
+@keyframes to-top { 
+    0% { transform: translateY(150px); } 
+    100%  { transform: translateY(0); } 
 }
 
 //-- DEFAULT ---------------------------------------------------- //
@@ -98,6 +113,7 @@ img {
 //-- BANNER ----------------------------------------------------- //
 
 #banner {
+    overflow: hidden;
     padding: 50px 0 45px;
     position: relative;
     background-color: $color-1;
@@ -130,6 +146,7 @@ img {
         width: 335px;
         display: block;
         margin: auto;
+        animation: to-top .5s ease-out 0s forwards;
     }
     .leaves {
         height: 100%;
@@ -140,16 +157,16 @@ img {
         &-left {
             width: 57vw;
             max-width: 60vw;
-            left: 0;
             background-image: url('images/hero/desktop/left-leaves.png');
             background-position: bottom right;
+            animation: to-right .7s ease-out 0s forwards;
         }
         &-right {
             width: 22vw;
             max-width: 22vw;
-            right: 0;
             background-image: url('images/hero/desktop/right-leaves.png');
             background-position: bottom left;
+            animation: to-left .6s ease-out 0s forwards;
         }
         &-top {
             display: none;
@@ -158,6 +175,7 @@ img {
             right: 0;
             background-image: url('images/hero/mobile/mobile-leaves.png');
             background-position: bottom center;
+            animation: to-bottom .5s ease-out 0s forwards;
         }
     }
 }
