@@ -1,3 +1,20 @@
+import smoothscroll from 'smoothscroll-polyfill'; // Polyfill for safari
+smoothscroll.polyfill();
+
+// -- Banner Full in Mobile ------------------------------- //
+
+function setBannerHeight() {
+	let banner = document.querySelector('#banner');
+	let windowHeight = window.innerHeight
+	if(window.matchMedia("(max-width: 576px)").matches) {
+		banner.style.minHeight = windowHeight + 'px'
+	} else {
+		banner.style.minHeight = 'auto'
+	}
+}
+
+window.addEventListener('load', setBannerHeight, false);
+
 // -- Scroll To ------------------------------------------- //
 
 function scrollToDiv(e) {
@@ -6,7 +23,7 @@ function scrollToDiv(e) {
 		top: document.querySelector(targeElement).offsetTop, 
 		left: 0, 
 		behavior: 'smooth' 
-	});
+	});	
 }
 
 document.querySelectorAll('.scrollTo').forEach(function(e) {
@@ -30,9 +47,16 @@ document.querySelectorAll('.select select').forEach(function(e) {
 
 // -- Render List ----------------------------------------- //
 
+let firstFavorite = true;
+
 function renderPlantsList(element) {
 	let item = document.createElement('a');
-	item.setAttribute('class', element.staff_favorite ? 'item favorite' : 'item');
+	item.setAttribute('class', 'item');
+	if(element.staff_favorite && firstFavorite) {
+		firstFavorite = false
+		item.setAttribute('class', 'item favorite');
+	}
+	// item.setAttribute('class', element.staff_favorite ? 'item favorite' : 'item');
 	renderList.appendChild(item);
 	item.innerHTML = `
 		${element.staff_favorite ? '<span class="flag">✨ Staff favorite</span>': ''}
@@ -56,6 +80,7 @@ function renderPlantsList(element) {
 // -- Fetch API ------------------------------------------- //
 
 function loadItems(options) {
+	firstFavorite = true
 	fetch(`https://front-br-challenges.web.app/api/v2/green-thumb/?sun=${options.sun}&water=${options.water}&pets=${options.pets}`)
 	.then(function (response) {
 		return response.json(); // The API call was successful!

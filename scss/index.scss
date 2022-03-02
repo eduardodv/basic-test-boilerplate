@@ -25,6 +25,11 @@
     100%  { transform: translateY(0); } 
 }
 
+@keyframes shake { 
+    0% , 50%, 100% { transform: rotate(0); } 
+    25%, 75% { transform: rotate(15deg); } 
+}
+
 //-- DEFAULT ---------------------------------------------------- //
 
 * {
@@ -93,18 +98,35 @@ img {
             filter: brightness(0) invert(1);
         }
     }
-    &:hover {
+    &:active {
         background-color: lighten($color-4, 10%);
     }
     &-outline {
         color: $color-4;
         background-color: transparent;
         border: 1px solid $color-4;
-        &:hover {
+        &:active {
             color: #fff;
             background-color: $color-4;
             img {
                 filter: brightness(0) invert(1);
+            }
+        }
+    }
+}
+
+@media (hover: hover) {
+    .btn {
+        &:hover {
+            background-color: lighten($color-4, 10%);
+        }
+        &-outline {
+            &:hover {
+                color: #fff;
+                background-color: $color-4;
+                img {
+                    filter: brightness(0) invert(1);
+                }
             }
         }
     }
@@ -241,8 +263,10 @@ img {
             color: $font-color-2;
             cursor: pointer;
             appearance: none;
+            -webkit-appearance: none;
             border-radius: 19px;
             padding: 5px 40px 5px 18px;
+            background: #fff;
             border: 1px solid $font-color-2;
             &:hover {
                 border-color: $color-1;
@@ -262,6 +286,8 @@ img {
     }
     .pick {
         max-width: 158px;
+        position: relative;
+        animation: shake 1s ease-out 1s forwards;
     }
     .title {
         color: $color-3;
@@ -470,6 +496,9 @@ img {
                 width: 258px;
                 min-width: 258px;
                 min-height: 320px;
+                &.favorite {
+                    order: -1;
+                }
                 .image {
                     img {
                         max-height: 221px;
