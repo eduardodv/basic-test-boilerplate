@@ -32,6 +32,7 @@
 
 //-- DEFAULT ---------------------------------------------------- //
 
+
 * {
     box-sizing: border-box;
 }
@@ -42,6 +43,10 @@ body {
     color: $font-color;
     background: $bg-body;
     font-family: "Montserrat", sans-serif;
+    transition: opacity .5s ease;
+    &.loading {
+        display: none;
+    }
 }
 
 b {
@@ -173,21 +178,18 @@ img {
     .leaves {
         height: 100%;
         position: absolute;
-        background-size: cover;
-        background-repeat: no-repeat;
+        object-fit: cover;
         top: 0;
         &-left {
             width: 57vw;
             max-width: 60vw;
-            background-image: url('images/hero/desktop/left-leaves.png');
-            background-position: bottom right;
+            object-position: bottom right;
             animation: to-right .7s ease-out 0s forwards;
         }
         &-right {
             width: 22vw;
             max-width: 22vw;
-            background-image: url('images/hero/desktop/right-leaves.png');
-            background-position: bottom left;
+            object-position: bottom left;
             animation: to-left .6s ease-out 0s forwards;
         }
         &-top {
@@ -195,8 +197,7 @@ img {
             height: calc(100% - 170px);
             left: 0;
             right: 0;
-            background-image: url('images/hero/mobile/mobile-leaves.png');
-            background-position: bottom center;
+            object-position: bottom center;
             animation: to-bottom .5s ease-out 0s forwards;
         }
     }

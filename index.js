@@ -1,5 +1,14 @@
-import smoothscroll from 'smoothscroll-polyfill'; // Polyfill for safari
+// -- Polyfill For Safari Smoothscroll--------------------- //
+
+import smoothscroll from 'smoothscroll-polyfill';
 smoothscroll.polyfill();
+
+// -- Show Page After JS Load ----------------------------- //
+
+function showPage() {
+	document.body.classList.remove('loading');
+}
+window.addEventListener('load', showPage, false);
 
 // -- Banner Full in Mobile ------------------------------- //
 
