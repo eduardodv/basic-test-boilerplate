@@ -3,7 +3,7 @@ Projeto realizado utilizando apenas javaScript vanilla e SCSS para o processo se
 
 Demo: [Green Thumb](https://testeduardofront.surge.sh/)
 
-![testfrontredventures](https://github.com/eduardodv/basic-test-boilerplate/assets/8463362/bdce000c-4069-4f9f-8872-b08900e0afd5)
+![testfrontredventures](https://github.com/eduardodv/basic-test-boilerplate/assets/8463362/ce25d548-f77b-4f0c-b6e9-c1abdbbeeccb)
 
 ## Como rodar localmente
 
